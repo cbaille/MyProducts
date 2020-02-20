@@ -1,5 +1,7 @@
 ﻿using Abp.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore;
+using MyProducts.ProductCategories;
+using MyProducts.Products;
 
 namespace MyProducts.EntityFrameworkCore
 {
@@ -12,5 +14,11 @@ namespace MyProducts.EntityFrameworkCore
         {
 
         }
+
+        public DbSet<Product> Products { get; set; }
+
+        public DbSet<ProductCategory> ProductCategories { get; set; }
+
+
     }
 }

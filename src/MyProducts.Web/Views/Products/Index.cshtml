@@ -1,0 +1,48 @@
+﻿@model MyProducts.Web.Models.Products.ProductListViewModel
+
+
+@section scripts
+{
+    <script src="~/js/views/products/Index.js" asp-append-version="true"></script>
+}
+<div class="body table-responsive">
+    <span><a class="btn btn-primary btn-sm" asp-action="Create">@L("AddNew")</a></span>
+
+    <table class="table">
+        <thead>
+            <tr>
+                <th>@L("Name")</th>
+            </tr>
+        </thead>
+        <tbody>
+            @foreach (var product in Model.Products)
+            {
+                <tr>
+                    <td>@product.Name</td>
+
+
+                    <td class="dropdown">
+                        <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">
+                            <i class="material-icons">Actions</i>
+                        </a>
+                        <ul class="dropdown-menu">
+                            <!--<li><a href="#" class="waves-effect waves-block edit-product" data-product-id="@product.Id" data-toggle="modal" data-target="#ProductEditModal"><i class="material-icons">edit</i>@L("Edit")</a></li>
+    -->
+                            <li></li><a class="btn btn-primary btn-sm" asp-action="Edit" asp-route-id="@product.Id">@L("Edit")</a>
+                            <li><a href="#" class="waves-effect waves-block delete-product" data-product-id="@product.Id" data-product-name="@product.Name"><i class="material-icons">delete_sweep</i>@L("Delete")</a></li>
+                        </ul>
+                    </td>
+                </tr>
+            }
+        </tbody>
+    </table>
+</div>
+
+<div class="modal fade" id="ProductEditModal" tabindex="-1" role="dialog" aria-labelledby="RoleEditModalLabel" data-backdrop="static">
+    <div class="modal-dialog" role="document">
+        <div class="modal-content">
+
+        </div>
+    </div>
+</div>
+
