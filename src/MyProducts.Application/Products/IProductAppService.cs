@@ -11,7 +11,7 @@ namespace MyProducts.Products
     public interface IProductAppService : IApplicationService
     {
         Task<ListResultDto<ProductListDto>> GetAll();
-        Task Create(CreateProductDto input);
-        Task<ProductDto> GetProductForEdit(int productID);
+        Task Create(CreateProductInput input);
+        Task<GetProductForEditOutput> GetProductForEdit(int productID);
     }
 }

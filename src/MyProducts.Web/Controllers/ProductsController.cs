@@ -29,7 +29,7 @@ namespace MyProducts.Web.Controllers
 
         public async Task<ActionResult> Index()
         {
-            var output = (await _productAppService.GetAll()).Items;
+            var output = (await _productAppService.GetAll()).Items; //change to list
 
             //var model = new ProductListViewModel(output.Items);
             var model = new ProductListViewModel()
@@ -39,12 +39,6 @@ namespace MyProducts.Web.Controllers
 
             return View(model);
         }
-
-        // GET: /<controller>/
-        /* public IActionResult Index()
-         {
-             return View();
-         }*/
 
         public async Task<ActionResult> Create()
         {
@@ -76,9 +70,7 @@ namespace MyProducts.Web.Controllers
                  .ToList();
 
             model.Category = productCategorieListItems;
-
-            return View("_EditProductModal", model);
-            //return View("_EditProductModal");
+            return View(model);
         }
 
     }

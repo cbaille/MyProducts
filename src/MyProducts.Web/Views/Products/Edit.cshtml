@@ -1,0 +1,42 @@
+﻿@using MyProducts.Web.Models.Products
+@model EditProductModalViewModel
+
+
+@section scripts
+{
+    <script src="~/js/views/products/edit.js" asp-append-version="true"></script>
+}
+
+
+<h2>
+    @L("Edit Product")
+</h2>
+
+<form id="ProductEditForm">
+    <input type="hidden" name="Id" value="@Model.Id" />
+
+    <div class="form-group">
+        <label for="Name">@L("Name")</label>
+        <input type="text" name="Name" class="form-control" value="@Model.Name" required maxlength="@MyProducts.Products.Product.MaxNameLength">
+    </div>
+
+    <div class="form-group">
+        <label for="Description">@L("Description")</label>
+        <input type="text" name="Description" class="form-control" value="@Model.Description" maxlength="@MyProducts.Products.Product.MaxDescriptionLength">
+    </div>
+
+    <div class="form-group">
+        @Html.Label(L("Category"))
+        @Html.DropDownList(
+            "CategoryId",
+            Model.Category,
+            new
+            {
+                @class = "form-control",
+                id = "CategoryCombobox"
+            })
+    </div>
+
+    <button type="submit" class="btn btn-default">@L("Save changes")</button>
+
+</form>

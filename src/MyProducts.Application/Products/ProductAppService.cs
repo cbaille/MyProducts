@@ -30,22 +30,16 @@ namespace MyProducts.Products
             );
         }
 
-        public async Task Create(CreateProductDto input)
+        public async Task Create(CreateProductInput input)
         {
             var product = ObjectMapper.Map<Product>(input);
             await _productRepository.InsertAsync(product);
         }
 
-        public async Task Delete(int ProductId)
-        {
-            //var product = ObjectMapper.Map<Product>(input);
-            await _productRepository.DeleteAsync(ProductId);
-        }
-
-        public async Task<ProductDto> GetProductForEdit(int productID)
+        public async Task<GetProductForEditOutput> GetProductForEdit(int productID)
         {
             var product = await _productRepository.GetAsync(productID);
-            return ObjectMapper.Map<ProductDto>(product);
+            return ObjectMapper.Map<GetProductForEditOutput>(product);
         }
 
         public async Task Update(ProductDto input)
@@ -61,6 +55,12 @@ namespace MyProducts.Products
 
             //var product = ObjectMapper.Map<Product>(input);
             //await _productRepository.InsertAsync(product);
+        }
+
+        public async Task Delete(int ProductId)
+        {
+            //var product = ObjectMapper.Map<Product>(input);
+            await _productRepository.DeleteAsync(ProductId);
         }
     }
 }

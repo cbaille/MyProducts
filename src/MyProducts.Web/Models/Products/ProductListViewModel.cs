@@ -8,7 +8,7 @@ namespace MyProducts.Web.Models.Products
 {
     public class ProductListViewModel
     {
-        public IReadOnlyList<ProductListDto> Products { get; set; }
+        public IReadOnlyList<ProductListDto> Products { get; set; } //no need to keep Dto?
 
     }
 }
