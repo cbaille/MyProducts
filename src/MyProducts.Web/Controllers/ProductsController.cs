@@ -31,7 +31,6 @@ namespace MyProducts.Web.Controllers
         {
             var output = (await _productAppService.GetAll()).Items; //change to list
 
-            //var model = new ProductListViewModel(output.Items);
             var model = new ProductListViewModel()
             {
                 Products = output
@@ -45,19 +44,9 @@ namespace MyProducts.Web.Controllers
             var productCategorieListItems = (await _productCategoriesAppService.GetCategoryRepositoryComboboxItems()).Items
                 .Select(p => p.ToSelectListItem())
                 .ToList();
-
-            return View(new CreateProductViewModel(productCategorieListItems));
-            //return View();
-
             //ProductCategorieListItems.Insert(0, new SelectListItem { Value = string.Empty, Text = L("Unassigned"), Selected = true });
 
-            /*var peopleSelectListItems = (await _lookupAppService.GetPeopleComboboxItems()).Items
-                .Select(p => p.ToSelectListItem())
-                .ToList();
-
-            peopleSelectListItems.Insert(0, new SelectListItem { Value = string.Empty, Text = L("Unassigned"), Selected = true });
-
-            return View(new CreateTaskViewModel(peopleSelectListItems));*/
+            return View(new CreateProductViewModel(productCategorieListItems));
         }
 
         public async Task<ActionResult> Edit(int id)

@@ -22,11 +22,8 @@
 			});
 		});
 
-
-
-
 		function refreshProductList() {
-			location.reload(true); //reload page to see new role!
+			location.reload(true);
 		}
 
 		function deleteClient(productId, productName) {
@@ -34,10 +31,7 @@
 				abp.utils.formatString(abp.localization.localize('AreYouSureWantToDelete', 'MyProduct'), productName),
 				function (isConfirmed) {
 					if (isConfirmed) {
-						//abp.services.app.product.delete({
-						//	id: productId
-						//}).done(function () {
-						abp.services.app.product.delete(productId)
+						abp.services.app.product.delete(productId)({ id: productId })
 							.done(function () {
 							refreshProductList();
 						});

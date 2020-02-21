@@ -48,18 +48,11 @@ namespace MyProducts.Products
 
             ObjectMapper.Map(input, product);
             await _productRepository.UpdateAsync(product);
-            //product.SetNormalizedNames();
 
-            //MapToEntity(input, user);
-
-
-            //var product = ObjectMapper.Map<Product>(input);
-            //await _productRepository.InsertAsync(product);
         }
 
         public async Task Delete(int ProductId)
         {
-            //var product = ObjectMapper.Map<Product>(input);
             await _productRepository.DeleteAsync(ProductId);
         }
     }
